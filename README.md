@@ -75,7 +75,7 @@ This script defines *user behavior*.
 
 Example content:
 
-python
+```python
 from locust import HttpUser, task, between
 
 class ReqresUser(HttpUser):
@@ -102,7 +102,7 @@ class ReqresUser(HttpUser):
             "name": "Updated Reetesh",
             "job": "Senior QA"
         })
-
+```
 
 ✅ *Explanation:*
 
