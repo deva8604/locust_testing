@@ -19,9 +19,9 @@ You need:
 
 Open terminal or command prompt:
 
-bash
-python --version
-
+ ```bash
+ python --version
+ ```
 
 ✅ Expected Output:
 
@@ -38,15 +38,15 @@ If not installed, download here:
 
 In your terminal:
 
-bash
-pip install locust
-
+ ```bash
+ pip install locust
+ ```
 
 ✅ Verify installation:
 
-bash
-locust --version
-
+```bash
+ locust --version
+ ```
 
 Example output:
 
@@ -59,11 +59,11 @@ locust 2.x.x
 ## 🟢 3️⃣ Create Project Directory
 
 Choose or create a folder to hold your test scripts:
-
-bash
-mkdir locust-demo
-cd locust-demo
-
+ 
+ ```bash
+ mkdir locust-demo
+ cd locust-demo
+ ```
 
 ---
 
@@ -118,9 +118,9 @@ class ReqresUser(HttpUser):
 
 Run:
 
-bash
-locust
-
+ ```bash
+ locust
+ ```
 
 ✅ Output Example:
 
