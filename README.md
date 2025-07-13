@@ -88,7 +88,7 @@ class ReqresUser(HttpUser):
     @task(1)
     def create_user(self):
         self.client.post("/api/users", json={
-            "name": "Reetesh",
+            "name": "Devesh",
             "job": "QA Engineer"
         })
 
@@ -134,9 +134,9 @@ Run:
 
 Open your browser:
 
-
+```bash
 http://localhost:8089
-
+```
 
 ✅ You’ll see the Locust web UI.
 
@@ -167,85 +167,66 @@ While the test is running, the UI shows:
 
 ✅ You can *Stop* the test anytime.
 
----
-
-## 🟢 9️⃣ Run in Headless Mode
-
-If you prefer no UI (e.g., in CI/CD), use:
-
-bash
-locust -f locustfile.py --headless -u 20 -r 5 --host=https://reqres.in --run-time 1m
-
-
-| Parameter       | Meaning                  |
-| --------------- | ------------------------ |
-| -u 20         | 20 simulated users       |
-| -r 5          | Spawn 5 users per second |
-| --run-time 1m | Run for 1 minute         |
-
-✅ Output will appear in the console.
-
----
-
+----
 ## 🟢 1️⃣0️⃣ Example Output Snapshot
 
-
+```bash
 Name                             # reqs      # fails  |     Avg     Min     Max  Median  ...
 GET /api/users?page=2              120     0(0.00%)     110      90     200    105
 POST /api/users                     60     0(0.00%)     130     100     220    125
-...
+```
 
 
 ---
 
 ## 🟢 1️⃣1️⃣ How to Extend This Script
 
-✅ *Add More Tasks:*
+* ✅ *Add More Tasks:*
 
-python
+```bash
 @task
 def delete_user(self):
     self.client.delete("/api/users/2")
+```
 
+* ✅ *Validate Responses:*
 
-✅ *Validate Responses:*
-
-python
+```bash
 @task
 def get_user(self):
     with self.client.get("/api/users/2", catch_response=True) as response:
         if response.status_code != 200:
             response.failure("Unexpected status code!")
+```
 
+* ✅ *Add Authentication (Bearer Token):*
 
-✅ *Add Authentication (Bearer Token):*
-
-python
+```bash
 def on_start(self):
     self.client.headers.update({
         "Authorization": "Bearer YOUR_TOKEN_HERE"
     })
+```
 
+* ✅ *Change Wait Times:*
 
-✅ *Change Wait Times:*
-
-python
+```python
 wait_time = between(0.5, 2)
-
+```
 
 ---
 
 ## 🟢 1️⃣2️⃣ Common Tips
 
-✅ *Tip 1:* Always start small (5–10 users) to verify everything works.
+* ✅ *Tip 1:* Always start small (5–10 users) to verify everything works.
 
-✅ *Tip 2:* Watch failure % carefully—if many requests fail, inspect API limits.
+* ✅ *Tip 2:* Watch failure % carefully—if many requests fail, inspect API limits.
 
-✅ *Tip 3:* Use --run-time to control duration.
+* ✅ *Tip 3:* Use --run-time to control duration.
 
-✅ *Tip 4:* If you need more concurrency, Locust supports *distributed load generation* (multiple machines).
+* ✅ *Tip 4:* If you need more concurrency, Locust supports *distributed load generation* (multiple machines).
 
-✅ *Tip 5:* You can export reports in CSV for analysis.
+* ✅ *Tip 5:* You can export reports in CSV for analysis.
 
 ---
 
@@ -271,10 +252,10 @@ wait_time = between(0.5, 2)
 
 ---
 
-✅ *You’re Ready!*
+* ✅ *You’re Ready!*
 
 With this guide, you can:
-✅ Install Locust
-✅ Write your own test scripts
-✅ Run and monitor load tests
-✅ Extend tests as needed
+* ✅ Install Locust
+* ✅ Write your own test scripts
+* ✅ Run and monitor load tests
+* ✅ Extend tests as needed
